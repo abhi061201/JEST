@@ -11,9 +11,8 @@ test("async operation test", () => {
 // another method of writing testcase
 
 test("async operation await", async () => {
-
     const data = await fetchData(true);
-    expect(data).toBe("hello");
+    return expect(data).toBe("gotcha");
 })
 
 // using promise
