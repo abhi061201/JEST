@@ -1,5 +1,11 @@
-function multiply(a, b) {
-    return a*b;
-}
+const fetchData = (shouldFail = false) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail) {
+        reject("error occured");
+      } else resolve("gotcha");
+    }, 100);
+  });
+};
 
-module.exports = multiply;
+module.exports = fetchData;

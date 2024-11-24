@@ -1,15 +1,23 @@
-const multiply = require('./index')
+const fetchData = require('./index')
 
-
-test("description 1", () => {
-    // this is deep equality check by toBe
-    expect(multiply(2, 4)).toBe(8)  // toBe check deep equality like === operator
+// Async test
+test("async operation test", () => {
+    return fetchData(false).then((data) => {
+        expect(data).toBe("gotcha");
+    })
 })
 
-// for object we need to use toEqual
-test("testing object", () => {
-    const data = { alpha: "A"};
-    data['beta'] ='B';
-    // this is not deep equality
-    expect(data).toEqual({ alpha: "A", beta: "B" }); // isEqual check == (structure same and values same)
+
+// another method of writing testcase
+
+test("async operation await", async () => {
+
+    const data = await fetchData(true);
+    expect(data).toBe("hello");
+})
+
+// using promise
+
+test("aysnc promise", async () => {
+     await expect(fetchData()).resolves.toBe("gotcha")
 })
